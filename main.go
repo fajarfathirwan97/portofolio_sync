@@ -17,8 +17,8 @@ import (
 func getPriceStock(symbol string) interface{} {
 	client := &http.Client{}
 	req, _ := http.NewRequest("GET", fmt.Sprintf("https://data.alpaca.markets/v2/stocks/%v/trades", symbol), nil)
-	req.Header.Set("APCA-API-KEY-ID", "PKVLMI3ZCTI26MDA7Z15")
-	req.Header.Set("APCA-API-SECRET-KEY", "G8v2sUXFL7Tx3Ryr7Fs0BHZB70Cmltq30yz1jCk9")
+	req.Header.Set("APCA-API-KEY-ID", "KEYID")
+	req.Header.Set("APCA-API-SECRET-KEY", "SECRET")
 	res, err := client.Do(req)
 	if err != nil {
 		log.Fatalf(err.Error())
@@ -48,7 +48,7 @@ func main() {
 		log.Fatalf("Unable to retrieve Sheets client: %v", err)
 	}
 
-	spreadsheetId := "17oKav5iiLcZ2ZEAYvSl0c4di3-p48V3lj4KF8W8NLSg"
+	spreadsheetId := "SHEET"
 	readRange := "Porto"
 	resp, err := srv.Spreadsheets.Values.Get(spreadsheetId, readRange).Do()
 	if err != nil {
